@@ -1,2 +1,1 @@
-# gb-react
-Practice with React course from GeekBrains
+# _Учебный проект по курсу ReactJS на GeekBrains_
