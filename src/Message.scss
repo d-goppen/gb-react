@@ -1,0 +1,16 @@
+.greet-red {
+  width: 50%;
+  font-size: 100px;
+  color: red;
+  text-shadow: 12px 12px 20px black;
+}
+
+.greet-welcome {
+  width: 50%;
+  font-size: 70px;
+  font-weight: 800;
+  background: linear-gradient(red, gold);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
