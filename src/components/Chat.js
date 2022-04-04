@@ -4,7 +4,6 @@ import MessagePane from './MessagePane';
 
 const Chat = (props) => {
   const { messageList, addMessage } = props;
-  // TODO: Добавить генерацию ответа
 
   return (
     <div className="chat-container">
