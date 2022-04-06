@@ -1,0 +1,13 @@
+.chat-container {
+  height: 80%;
+  min-height: 250px;
+  width: 50%;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fffdfdc0;
+  border-radius: 15px;
+  border: 2px solid lightgray;
+  padding: 15px;
+  box-shadow: 0 0 30px #0003;
+}

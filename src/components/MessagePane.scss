@@ -1,0 +1,40 @@
+.message-pane {
+  display: flex;
+  padding-top: 10px;
+  border-top: 1px solid darkgray;
+}
+
+.message-input {
+  background: none;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid lightgray;
+  flex-grow: 1;
+  padding: 5px;
+  margin-right: 10px;
+  font-size: 18px;
+  line-height: 22px;
+
+  &:focus-visible {
+    border-bottom: 2px solid lightgreen;
+  }
+}
+
+.send-button {
+  outline: none;
+  padding: 0 10px;
+  background: none;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  font-size: 18px;
+
+  &:not([disabled]):hover,
+  &:focus {
+    border: 1px solid #63666a;
+    box-shadow: 0 0 5px #63666a;
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+}
