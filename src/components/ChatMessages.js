@@ -1,6 +1,8 @@
+//import './ChatMessages.scss';
 import { useRef, useEffect } from 'react';
 import { AUTHORS } from '../assets/constants';
-import './ChatMessages.scss';
+import { Box, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { FaceRounded, LaptopRounded } from '@mui/icons-material';
 
 const ChatMessages = (props) => {
 
@@ -11,26 +13,27 @@ const ChatMessages = (props) => {
     }}, [props.messageList]);
 
   return (
-    <div className="messages-list"
-         ref={ messageListRef }>
-      { props.messageList.map(
-          el => {
-            return (
-              <div key={ el.timeStamp.toString() }
-                   className={ 'message-container ' + (el.author === AUTHORS.bot ? 'bot-filled' : 'user-filled' )}>
-                <div className="message-header">
-                  <div className="message-header_author">{ el.author }</div>
-                  <div className="message-header_timestamp">
-                    { new Date(el.timeStamp).toLocaleTimeString() }
-                  </div>
-                </div>
-                <div className="message-text">{ el.text }</div>
-              </div>
-            );
-          }
-        )
-      }
-    </div>
+    <Box height="100%"
+         overflow="auto">
+      <List>
+        { props.messageList.map(
+            (el, idx, arr) => {
+              const iconName = (el.author === AUTHORS.bot) ? <LaptopRounded /> : <FaceRounded />;
+              return (
+                <ListItem divider={ idx < (arr.length - 1) }
+                          key={ el.timeStamp.toString() }>
+                  <ListItemIcon>
+                    { iconName }
+                  </ListItemIcon>
+                  <ListItemText primary={ el.text }
+                                secondary={ new Date(el.timeStamp).toLocaleTimeString() } />
+                </ListItem>
+              );
+            }
+          )
+        }
+      </List>
+    </Box>
   );
 };
 
