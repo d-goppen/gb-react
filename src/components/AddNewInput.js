@@ -1,6 +1,7 @@
 //import './MessagePane.scss';
 import { useEffect, useState, useRef } from 'react';
 import { Stack, Input, IconButton } from '@mui/material';
+import { AUTHORS } from '../assets/constants';
 
 const AddNewInput = ({ children, pushText, placeholder = 'Введите текст', autofocus = false }) => {
 
@@ -19,7 +20,8 @@ const AddNewInput = ({ children, pushText, placeholder = 'Введите тек�
       pushText ?
       pushText(
         {
-          'timeStamp': Date.now(),
+          'timeStamp': Date.now().toString(),
+          'author': AUTHORS.user,
           'text': newText,
         }) : console.log('Text push stub.');
       setNewText('');

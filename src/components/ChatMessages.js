@@ -1,10 +1,11 @@
 //import './ChatMessages.scss';
-import { useRef, useEffect } from 'react';
-import { AUTHORS } from '../assets/constants';
+import { useRef, useState, useEffect } from 'react';
 import { Box, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { FaceRounded, LaptopRounded } from '@mui/icons-material';
+import { AUTHORS } from '../assets/constants';
 
 const ChatMessages = (props) => {
+  const { messageList } = props;
 
   const messageListRef= useRef(null);
   useEffect(() => {
@@ -16,7 +17,7 @@ const ChatMessages = (props) => {
     <Box height="100%"
          overflow="auto">
       <List>
-        { props.messageList.map(
+        { messageList.map(
             (el, idx, arr) => {
               const iconName = (el.author === AUTHORS.bot) ? <LaptopRounded /> : <FaceRounded />;
               return (
@@ -26,7 +27,7 @@ const ChatMessages = (props) => {
                     { iconName }
                   </ListItemIcon>
                   <ListItemText primary={ el.text }
-                                secondary={ new Date(el.timeStamp).toLocaleTimeString() } />
+                                secondary={ new Date(+el.timeStamp).toLocaleTimeString() } />
                 </ListItem>
               );
             }

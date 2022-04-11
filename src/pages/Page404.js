@@ -1,6 +1,5 @@
 import { Alert } from "@mui/material";
 
-
 const Page404 = () => {
   return (
     <Alert variant="outlined" severity="error">
