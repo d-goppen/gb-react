@@ -1,6 +1,8 @@
+//import './MessagePane.scss';
 import { useEffect, useState, useRef } from 'react';
-import './MessagePane.scss';
 import { AUTHORS } from '../assets/constants';
+import { Stack, Input, IconButton } from '@mui/material';
+import SendRoundedIcon from '@mui/icons-material/SendRounded';
 
 const MessagePane = (props) => {
 
@@ -10,7 +12,7 @@ const MessagePane = (props) => {
   const [isEmpty, setEmpty] = useState(true);
   useEffect(() => setEmpty(!newMessage), [newMessage]);
 
-  const messageKeyDown = (event) => (!!newMessage && event.key === 'Enter') ? sendMessage() : true;
+  const messageKeyDown = (event) => (!isEmpty && event.key === 'Enter') ? sendMessage() : true;
 
   const messageText = useRef(null);
 
@@ -27,22 +29,23 @@ const MessagePane = (props) => {
     };
 
   return (
-    <div className="message-pane">
-      <input type="text"
-             ref={ messageText }
-             className="message-input"
+    <Stack direction="row"
+           spacing={ 1 }>
+      <Input inputRef={ messageText }
+             variant="standard"
+             placeholder="Сообщение вводится тут"
+             autoFocus={ true }
+             fullWidth={ true }
              value={ newMessage }
-             autoFocus
              onChange={ updateMessage }
              onKeyDown={ messageKeyDown }
       />
-      <button className="send-button"
-              onClick={ sendMessage }
-              disabled={ isEmpty }
-      >
-        Отправить
-      </button>
-    </div>
+      <IconButton color="primary"
+                  disabled={ isEmpty }
+                  onClick={ sendMessage }>
+        <SendRoundedIcon />
+      </IconButton>
+    </Stack>
   );
 };
 
