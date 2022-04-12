@@ -20,7 +20,7 @@ const AddNewInput = ({ children, pushText, placeholder = 'Введите тек�
       pushText ?
       pushText(
         {
-          'timeStamp': Date.now().toString(),
+          'timeStamp': String(Date.now()),
           'author': AUTHORS.user,
           'text': newText,
         }) : console.log('Text push stub.');
