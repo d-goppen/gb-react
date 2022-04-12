@@ -1,0 +1,8 @@
+.chat-bookmark {
+  cursor: pointer;
+
+  &:hover,
+  &.active {
+    background: #ffffff0a;
+  }
+}
