@@ -26,7 +26,7 @@ const initialChatsState = {
   ],
 
   getChat: function(chatId) {
-    const chatIndex = this.chats.findIndex(el => el.id === chatId.toString());
+    const chatIndex = this.chats.findIndex(el => el.id === String(chatId));
     return chatIndex >= 0 ? this.chats[chatIndex] : undefined;
   },
 };
@@ -35,7 +35,7 @@ export const chatsReducer = (state, action) => {
 
   switch (action.type) {
     case 'MESSAGE_ADD': {
-      const chatIndex = state.chats.findIndex(el => el.id.toString() === action.messageInfo.chatId.toString());
+      const chatIndex = state.chats.findIndex(el => String(el.id) === String(action.messageInfo.chatId));
       if (chatIndex >= 0) {
         return {
           chats: [ ...state.chats.slice(0, chatIndex),
@@ -43,7 +43,7 @@ export const chatsReducer = (state, action) => {
                      chatName: state.chats[chatIndex].chatName,
                      messages: [...state.chats[chatIndex].messages,
                                 {
-                                  timeStamp: action.messageInfo?.timeStamp.toString(),
+                                  timeStamp: String(action.messageInfo?.timeStamp),
                                   author: action.messageInfo.author,
                                   text: action.messageInfo.text,
                                 }]
@@ -68,7 +68,7 @@ export const chatsReducer = (state, action) => {
     }
 
     case 'CHAT_DELETE': {
-      return { chats: state.chats.filter(el => el.id !== action.chatId.toString()),
+      return { chats: state.chats.filter(el => el.id !== String(action.chatId)),
                getChat: state.getChat };
     }
 

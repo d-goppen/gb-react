@@ -2,7 +2,12 @@ import { Stack } from "@mui/material";
 
 const Home = () => {
   return(
-    <div>HOME</div>
+    <Stack height="100%"
+           width="100%"
+           justifyContent="center"
+           alignItems="center">
+      <h1>HOME PAGE</h1>
+    </Stack>
   );
 };
 

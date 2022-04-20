@@ -14,8 +14,8 @@ const ChatsList = (props) => {
   const deleteChat = (chatId, activeChat) => {
     let result = activeChat;
 
-    if (chatId.toString() === activeChat.toString()) {
-      const chatIndex = chatsState.chats.findIndex(el => el.id === chatId.toString());
+    if (String(chatId) === String(activeChat)) {
+      const chatIndex = chatsState.chats.findIndex(el => el.id === String(chatId));
 
       if (chatIndex === chatsState.chats.length - 1) {
         result = chatsState.chats.length > 1 ? chatsState.chats[chatIndex - 1].id : '';
@@ -24,8 +24,8 @@ const ChatsList = (props) => {
       };
     };
 
-    chatsDispatch({ type: 'CHAT_DELETE', chatId: chatId.toString() });
-    return result.toString();
+    chatsDispatch({ type: 'CHAT_DELETE', chatId: String(chatId) });
+    return String(result);
   };
 
   const addChat = (chatData) => {

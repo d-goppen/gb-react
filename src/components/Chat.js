@@ -1,5 +1,5 @@
 //import './Chat.scss';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Alert, Stack, Divider } from '@mui/material';
 import { AUTHORS, ANSWER_DELAY } from '../assets/constants';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
@@ -49,7 +49,7 @@ const Chat = (props) => {
   };
 
   useEffect(() => {
-    if (messageList.length && messageList[messageList.length - 1].author === AUTHORS.user) {
+    if (messageList?.length && messageList[messageList?.length - 1].author === AUTHORS.user) {
     let answerTimeout = setTimeout(
       () => addMessage(getBotAnswer()),
       ANSWER_DELAY.min + Math.random() * (ANSWER_DELAY.max - ANSWER_DELAY.min)
@@ -59,7 +59,7 @@ const Chat = (props) => {
       clearTimeout(answerTimeout)
     });
     };
-  }, [messageList]);
+  }, [messageList, addMessage]);
 
 
   const chatBox = (activeChatId === undefined || !Array.isArray(chatsState.getChat(activeChatId)?.messages)) ?

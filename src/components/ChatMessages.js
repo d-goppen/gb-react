@@ -1,5 +1,5 @@
 //import './ChatMessages.scss';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { Box, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { FaceRounded, LaptopRounded } from '@mui/icons-material';
 import { AUTHORS } from '../assets/constants';
@@ -22,7 +22,7 @@ const ChatMessages = (props) => {
               const iconName = (el.author === AUTHORS.bot) ? <LaptopRounded /> : <FaceRounded />;
               return (
                 <ListItem divider={ idx < (arr.length - 1) }
-                          key={ el.timeStamp.toString() }>
+                          key={ String(el.timeStamp) }>
                   <ListItemIcon>
                     { iconName }
                   </ListItemIcon>
